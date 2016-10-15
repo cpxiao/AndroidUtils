@@ -23,7 +23,7 @@ public class MacAddressUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private MacAddressUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

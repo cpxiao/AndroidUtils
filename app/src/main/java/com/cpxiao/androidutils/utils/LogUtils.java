@@ -28,7 +28,7 @@ public class LogUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private LogUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

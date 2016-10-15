@@ -19,7 +19,7 @@ public class SdcardUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private SdcardUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

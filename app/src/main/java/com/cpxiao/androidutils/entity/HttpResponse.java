@@ -38,20 +38,20 @@ public class HttpResponse {
     private String url;
     /**
      * http response content
-     **/
+     */
     private String responseBody;
     private Map<String, Object> responseHeaders;
     /**
      * type to mark this response
-     **/
+     */
     private int type;
     /**
      * expired time in milliseconds
-     **/
+     */
     private long expiredTime;
     /**
      * this is a client mark, whether this response is in client cache
-     **/
+     */
     private boolean isInCache;
 
     private boolean isInitExpiredTime;

@@ -16,7 +16,7 @@ import android.view.WindowManager;
 public class ScreenUtils {
     /**
      * cannot be instantiated
-     **/
+     */
     private ScreenUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

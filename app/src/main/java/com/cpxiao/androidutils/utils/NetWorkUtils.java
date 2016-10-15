@@ -29,7 +29,7 @@ public class NetWorkUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private NetWorkUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

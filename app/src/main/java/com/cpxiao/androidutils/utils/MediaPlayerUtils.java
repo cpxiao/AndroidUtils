@@ -22,7 +22,7 @@ public class MediaPlayerUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private MediaPlayerUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

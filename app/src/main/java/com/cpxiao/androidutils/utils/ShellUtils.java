@@ -213,15 +213,15 @@ public class ShellUtils {
 
         /**
          * result of command
-         **/
+         */
         public int result;
         /**
          * success message of command result
-         **/
+         */
         public String successMsg;
         /**
          * error message of command result
-         **/
+         */
         public String errorMsg;
 
         public CommandResult(int result) {

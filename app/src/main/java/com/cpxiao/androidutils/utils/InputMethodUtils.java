@@ -13,7 +13,7 @@ public class InputMethodUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private InputMethodUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

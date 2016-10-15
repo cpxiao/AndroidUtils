@@ -21,16 +21,16 @@ import java.util.Map;
 public class SoundPoolUtils {
 
     /**
-     * 双重校验锁单例模式，注意不要遗漏volatile关键字
-     */
-    private static volatile SoundPoolUtils soundPoolUtils = null;
-
-    /**
      * cannot be instantiated
-     **/
+     */
     private SoundPoolUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
+
+    /**
+     * 双重校验锁单例模式，注意不要遗漏volatile关键字
+     */
+    private static volatile SoundPoolUtils soundPoolUtils = null;
 
     public static SoundPoolUtils getInstance() {
         if (soundPoolUtils == null) {

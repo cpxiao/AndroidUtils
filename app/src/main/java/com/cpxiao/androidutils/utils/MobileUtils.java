@@ -18,7 +18,7 @@ public class MobileUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private MobileUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

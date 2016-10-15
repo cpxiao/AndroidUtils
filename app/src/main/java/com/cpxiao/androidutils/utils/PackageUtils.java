@@ -129,7 +129,7 @@ public class PackageUtils {
          * if context is system app, don't need root permission, but should add
          * <uses-permission android:name="android.permission.INSTALL_PACKAGES"
          * /> in manifest
-         **/
+         */
         String command = "LD_LIBRARY_PATH=/vendor/lib:/system/lib pm install " +
                 (pmParams == null ? "" : pmParams) + " " + filePath.replace(" ", "\\ ");
         ShellUtils.CommandResult commandResult = ShellUtils.execCommand(command, !isSystemApplication(context), true);
@@ -331,7 +331,7 @@ public class PackageUtils {
          * if context is system app, don't need root permission, but should add
          * <uses-permission android:name="android.permission.DELETE_PACKAGES" />
          * in manifest
-         **/
+         */
         String command = "LD_LIBRARY_PATH=/vendor/lib:/system/lib pm uninstall" +
                 (isKeepData ? " -k " : " ") + packageName.replace(" ", "\\ ");
         ShellUtils.CommandResult commandResult = ShellUtils.execCommand(command, !isSystemApplication(context), true);

@@ -1,5 +1,7 @@
 package com.cpxiao.androidutils.constant;
 
+import com.cpxiao.androidutils.BuildConfig;
+
 /**
  * config file
  *
@@ -9,7 +11,7 @@ public class Constant {
     /**
      * 是否是DEBUG
      */
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = BuildConfig.DEBUG;
 
 }
 

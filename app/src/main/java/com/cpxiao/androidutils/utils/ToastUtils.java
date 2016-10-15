@@ -19,7 +19,7 @@ public class ToastUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private ToastUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
@@ -44,7 +44,7 @@ public class ToastUtils {
     }
 
     /**
-     * 短时间显示Toast
+     * 短时间显示Toast，不覆盖
      *
      * @param context context
      * @param msg     msg
@@ -56,7 +56,7 @@ public class ToastUtils {
     }
 
     /**
-     * 短时间显示Toast
+     * 短时间显示Toast，不覆盖
      *
      * @param context context
      * @param resId   resId
@@ -68,7 +68,7 @@ public class ToastUtils {
     }
 
     /**
-     * 长时间显示Toast
+     * 长时间显示Toast，不覆盖
      *
      * @param context context
      * @param msg     msg
@@ -80,7 +80,7 @@ public class ToastUtils {
     }
 
     /**
-     * 长时间显示Toast
+     * 长时间显示Toast，不覆盖
      *
      * @param context context
      * @param resId   resId

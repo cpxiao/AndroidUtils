@@ -1,6 +1,8 @@
 package com.cpxiao.androidutils.utils;
 
 
+import android.app.ActivityManager;
+import android.app.DownloadManager;
 import android.app.WallpaperManager;
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,7 +15,9 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,7 +35,7 @@ public class AppUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private AppUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
@@ -71,6 +75,7 @@ public class AppUtils {
         }
         return null;
     }
+
 
     /**
      * 获取当前应用程序版本名称
@@ -117,6 +122,32 @@ public class AppUtils {
     }
 
     /**
+     * 判断应用是否正在运行
+     * ps:Android L之后权限收敛，getRunningTasks() is deprecated
+     *
+     * @param context     context
+     * @param packageName 应用包名
+     * @return boolean
+     */
+    public static boolean isAppActive(Context context, String packageName) {
+        if (context == null || TextUtils.isEmpty(packageName)) {
+            return false;
+        }
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> list = am.getRunningTasks(100);
+        boolean isAppRunning = false;
+        if (list != null) {
+            for (ActivityManager.RunningTaskInfo info : list) {
+                if (info.topActivity.getPackageName().equals(packageName) || info.baseActivity.getPackageName().equals(packageName)) {
+                    isAppRunning = true;
+                    break;
+                }
+            }
+        }
+        return isAppRunning;
+    }
+
+    /**
      * 打开应用
      *
      * @param context     context
@@ -137,7 +168,7 @@ public class AppUtils {
     }
 
     /**
-     * 是否安装了某个app
+     * 是否安装了某个版本app
      *
      * @param context     context
      * @param packageName 包名
@@ -157,6 +188,26 @@ public class AppUtils {
             e.printStackTrace();
         }
         return false;
+    }
+
+    /**
+     * 是否需要升级某个app
+     *
+     * @param context     context
+     * @param appId       包名
+     * @param versionCode 版本号
+     * @return true：未安装或者安装版本过低
+     * false：其他
+     */
+    public static boolean isNeedInstall(Context context, String appId, int versionCode) {
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            PackageInfo packagesInfo = packageManager.getPackageInfo(appId, 0);
+            return packagesInfo.versionCode < versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 
     /**
@@ -296,4 +347,56 @@ public class AppUtils {
         maps.put("apps_info", array.toString());
         return maps;
     }
+
+    /**
+     * 启动系统下载
+     *
+     * @param context     context
+     * @param url         下载地址
+     * @param packageName 应用包名
+     */
+    public static void downloadApp(Context context, String url, String packageName, boolean showNotification) {
+        if (context == null) {
+            return;
+        }
+        if (url == null || url.trim().equals("")) {
+            return;
+        }
+        if (TextUtils.isEmpty(packageName)) {
+            return;
+        }
+        DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+
+        Uri uri = Uri.parse(url);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setTitle(packageName);
+//        request.setDescription("description");
+        request.setMimeType("application/vnd.android.package-archive");
+        // 移动网络情况下是否允许漫游
+        request.setAllowedOverRoaming(false);
+        // 设置下载允许的网络类型，默认在任何网络下都允许下载。有NETWORK_MOBILE、NETWORK_WIFI、NETWORK_BLUETOOTH三种及其组合可供选择。如果只允许wifi下载，而当前网络为3g，则下载会等待。
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+        try {
+            // 设置文件存放目录,也可以用setDestinationInExternalPublicDir()
+            request.setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, packageName + "tmp.apk");
+        } catch (IllegalStateException e) {
+            //报错 java.lang.IllegalStateException: Failed to get external storage files directory
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (showNotification) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                //VISIBILITY_VISIBLE_NOTIFY_COMPLETED表示在下载过程中通知栏会一直显示该下载，在下载完成后仍然会显示，直到用户点击该通知或者消除该通知。还有其他参数可供选择
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                //不显示任何通知栏提示，这个需要在AndroidManifest中添加权限android.permission.DOWNLOAD_WITHOUT_NOTIFICATION.
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
+            }
+        }
+        long requestId = downloadManager.enqueue(request);
+    }
+
 }

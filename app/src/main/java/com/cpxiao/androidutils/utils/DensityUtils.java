@@ -14,7 +14,7 @@ public class DensityUtils {
 
     /**
      * cannot be instantiated
-     **/
+     */
     private DensityUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

@@ -51,19 +51,19 @@ public class HttpUtils {
 
     /**
      * url and para separator
-     **/
+     */
     public static final String URL_AND_PARA_SEPARATOR = "?";
     /**
      * parameters separator
-     **/
+     */
     public static final String PARAMETERS_SEPARATOR = "&";
     /**
      * paths separator
-     **/
+     */
     public static final String PATHS_SEPARATOR = "/";
     /**
      * equal sign
-     **/
+     */
     public static final String EQUAL_SIGN = "=";
 
     private HttpUtils() {
