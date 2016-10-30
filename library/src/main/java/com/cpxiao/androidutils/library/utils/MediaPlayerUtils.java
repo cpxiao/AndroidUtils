@@ -20,11 +20,7 @@ public class MediaPlayerUtils {
      */
     private static volatile MediaPlayerUtils mMediaPlayerUtils = null;
 
-    /**
-     * cannot be instantiated
-     */
     private MediaPlayerUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static MediaPlayerUtils getInstance() {
@@ -85,9 +81,9 @@ public class MediaPlayerUtils {
         try {
             mMediaPlayer.prepare();
         } catch (IllegalStateException e) {
-//                e.printStackTrace();
+            //                e.printStackTrace();
         } catch (IOException e) {
-//                e.printStackTrace();
+            //                e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }

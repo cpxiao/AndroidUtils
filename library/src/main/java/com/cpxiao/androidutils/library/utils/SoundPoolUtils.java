@@ -20,11 +20,7 @@ import java.util.Map;
  */
 public class SoundPoolUtils {
 
-    /**
-     * cannot be instantiated
-     */
     private SoundPoolUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     /**
