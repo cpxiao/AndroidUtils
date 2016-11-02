@@ -3,7 +3,7 @@ package com.cpxiao.androidutils.library.utils;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.cpxiao.androidutils.library.constant.Constant;
+import com.cpxiao.androidutils.library.constant.Config;
 
 
 /**
@@ -13,7 +13,7 @@ import com.cpxiao.androidutils.library.constant.Constant;
  */
 public class ToastUtils {
 
-    private static final boolean DEBUG = Constant.DEBUG;
+    private static final boolean DEBUG = Config.DEBUG;
 
     private static Toast mToast;
 

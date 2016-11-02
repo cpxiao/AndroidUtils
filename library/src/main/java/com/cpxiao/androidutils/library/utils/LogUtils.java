@@ -2,7 +2,7 @@ package com.cpxiao.androidutils.library.utils;
 
 import android.util.Log;
 
-import com.cpxiao.androidutils.library.constant.Constant;
+import com.cpxiao.androidutils.library.constant.Config;
 
 import java.util.Hashtable;
 
@@ -12,7 +12,7 @@ import java.util.Hashtable;
  * @author cpxiao on 2016/6/12
  */
 public class LogUtils {
-    private static final boolean DEBUG = Constant.DEBUG;
+    private static final boolean DEBUG = Config.DEBUG;
 
     private static final String TAG = "CPXIAO";
     /**

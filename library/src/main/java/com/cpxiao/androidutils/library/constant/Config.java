@@ -6,7 +6,7 @@ package com.cpxiao.androidutils.library.constant;
  *
  * @author cpxiao on 2016/5/30.
  */
-public class Constant {
+public class Config {
     /**
      * 是否是DEBUG
      */

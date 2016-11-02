@@ -2,7 +2,7 @@ package com.cpxiao.androidutils.library.utils;
 
 import android.util.Log;
 
-import com.cpxiao.androidutils.library.constant.Constant;
+import com.cpxiao.androidutils.library.constant.Config;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,7 +15,7 @@ import java.util.Locale;
  */
 public class TimeUtils {
     private static final String TAG = TimeUtils.class.getSimpleName();
-    private static final boolean DEBUG = Constant.DEBUG;
+    private static final boolean DEBUG = Config.DEBUG;
 
     public static final SimpleDateFormat DATE_FORMAT_DEFAULT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
     public static final SimpleDateFormat DATE_FORMAT_DATE = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
