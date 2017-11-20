@@ -25,7 +25,7 @@ public class MediaPlayerUtils {
 
     public static MediaPlayerUtils getInstance() {
         if (mMediaPlayerUtils == null) {
-            synchronized (SoundPoolUtils.class) {
+            synchronized (MediaPlayerUtils.class) {
                 if (mMediaPlayerUtils == null) {
                     mMediaPlayerUtils = new MediaPlayerUtils();
                 }
@@ -112,7 +112,19 @@ public class MediaPlayerUtils {
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVol - 1, AudioManager.FLAG_PLAY_SOUND);
     }
 
+    /**
+     * 快进
+     */
     public void fastForward() {
+        fastForward(setTime);
+    }
+
+    /**
+     * 快进
+     *
+     * @param setTime 时长
+     */
+    public void fastForward(int setTime) {
         int deltaTime = currentTime + setTime;
         if (deltaTime > musicMaxTime) {
             mMediaPlayer.seekTo(musicMaxTime);
@@ -121,7 +133,19 @@ public class MediaPlayerUtils {
         }
     }
 
+    /**
+     * 快退
+     */
     public void rewind() {
+        rewind(setTime);
+    }
+
+    /**
+     * 快退
+     *
+     * @param setTime 时长
+     */
+    public void rewind(int setTime) {
         int deltaTime = currentTime - setTime;
         if (deltaTime < 0) {
             mMediaPlayer.seekTo(0);
