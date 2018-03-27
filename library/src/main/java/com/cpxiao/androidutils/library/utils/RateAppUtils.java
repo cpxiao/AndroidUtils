@@ -61,7 +61,7 @@ public class RateAppUtils {
             intent.addCategory(Intent.CATEGORY_LAUNCHER);
             intent.setAction(Intent.ACTION_MAIN);
             intent.setComponent(new ComponentName("com.android.vending", "com.google.android.finsky.activities.LaunchUrlHandlerActivity"));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(intent);
         } catch (Exception e) {
             rateToDetailPage(context);
