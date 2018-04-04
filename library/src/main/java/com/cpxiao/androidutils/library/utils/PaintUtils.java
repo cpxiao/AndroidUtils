@@ -8,7 +8,7 @@ import android.text.TextUtils;
  *
  * @author cpxiao on 2016/10/15
  */
-public class PaintUtil {
+public class PaintUtils {
     /**
      * 计算文字大小，在给定宽度内确保文字能够完整显示
      *

@@ -1,16 +1,17 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion 15
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,6 +21,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
 
 }

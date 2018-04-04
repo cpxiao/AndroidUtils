@@ -8,7 +8,7 @@ import android.content.Context;
  *
  * @author cpxiao on 2016/10/15
  */
-public class ProcessUtil {
+public class ProcessUtils {
 
     /**
      * 获得当前进程的进程名字
